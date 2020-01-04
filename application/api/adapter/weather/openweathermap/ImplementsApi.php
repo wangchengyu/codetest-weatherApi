@@ -1,7 +1,9 @@
 <?php
 namespace app\adapter\weather\openweatherthrmap;
 
-class ImplementsApi extends IntfApi {
+use app\adapter\weather\IntfApi;
+
+class ImplementsApi implements IntfApi {
 
     /**
      * @var array source data from 3rd api
@@ -29,7 +31,7 @@ class ImplementsApi extends IntfApi {
      */
     public function __construct($cityCode) {
 
-        $this->config = Config::get('citys')['api'][static::$name];
+        $this->config = Config::get('WeatherApi')[static::$name];
         $this->cityId = $this->config['city_id_map'][$cityCode];
     }
 
@@ -65,7 +67,7 @@ class ImplementsApi extends IntfApi {
             );
     }
 
-    public function getWhether() {
+    public function getWeather() {
         return $this->sourceData['weather']['description'];
     }
 

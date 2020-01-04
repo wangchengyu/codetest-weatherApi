@@ -5,10 +5,10 @@
 
 return [
     'city_list' => [
-        // this data format is id => city name
-        // the id is coming from
-        '2147714' => 'Sydney',
-        '7839805' => 'Melbourne',
-        '7839791' => 'Wollongong',
+        // this data format is code => city name
+        // the city code is self defined.
+        '1' => 'Sydney',
+        '2' => 'Melbourne',
+        '3' => 'Wollongong',
     ]
 ];
