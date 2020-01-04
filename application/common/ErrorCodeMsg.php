@@ -29,7 +29,7 @@ class ErrorCodeMsg
     public static function getMessage($code) {
 
         if (!self::$store) {
-            self::$store = Config::load('CodeMessage');
+            self::$store = Config::get('CodeMessage');
         }
 
         return isset(self::$store[$code]) ? self::$store[$code] : "";

@@ -149,7 +149,7 @@ class Log
     public static function save()
     {
         // 没有需要保存的记录则直接返回
-        if (empty(self::$log)) {
+        if (true || empty(self::$log)) {
             return true;
         }
 
