@@ -20,9 +20,6 @@
          */
         public static function jsonResult($result, $code = ErrorCodeMsg::CODE_OK, $message = '') {
 
-            //Allow orgin
-            header("Access-Control-Allow-Origin *");
-
             $message === "" ? $message = ErrorCodeMsg::getMessage($code) : null;
 
             return json([
