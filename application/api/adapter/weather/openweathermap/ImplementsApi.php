@@ -65,17 +65,17 @@ class ImplementsApi implements IntfApi {
         return number_format(
             $this->sourceData['main']['temp'] - 273.15, // this temp was Kelvin degree, so minus 273.15
             1
-            );
+        )."℃";
     }
 
     public function getWeather() {
-        return $this->sourceData['weather'][0]['description'];
+        return ucwords($this->sourceData['weather'][0]['description']);
     }
 
     public function getWind() {
         return number_format(
             $this->sourceData['wind']['speed'] * 3.6, //this value unit was meter/sec.so transfer it to kilo/hours
             1
-        );
+        )."km/h";
     }
 }

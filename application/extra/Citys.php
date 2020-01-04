@@ -7,8 +7,8 @@ return [
     'city_list' => [
         // this data format is code => city name
         // the city code is self defined.
-        '1' => 'Sydney',
-        '2' => 'Melbourne',
-        '3' => 'Wollongong',
+        ['code' => '1', 'city_name' => 'Sydney'],
+        ['code' => '2', 'city_name' => 'Melbourne'],
+        ['code' => '3', 'city_name' => 'Wollongong'],
     ]
 ];
