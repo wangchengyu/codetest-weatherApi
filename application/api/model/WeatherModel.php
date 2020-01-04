@@ -51,11 +51,11 @@
          */
         public function getWeather() {
             return [
-                'City' => $this->adapter->getCityName(),
-                'Updated time' => $this->adapter->getUpdatedTime(),
-                'Weather' => $this->adapter->getWeather(),
-                'Temperature' => $this->adapter->getTemperature(),
-                'Wind' => $this->adapter->getWind(),
+                ['label' => 'City',             'value' => $this->adapter->getCityName()],
+                ['label' => 'Updated time' ,    'value' => $this->adapter->getUpdatedTime()],
+                ['label' => 'Weather',          'value' => $this->adapter->getWeather()],
+                ['label' => 'Temperature',      'value'  => $this->adapter->getTemperature()],
+                ['label' => 'Wind',             'value'  => $this->adapter->getWind()],
             ];
         }
     }
