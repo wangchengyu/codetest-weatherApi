@@ -1,6 +1,6 @@
 <?php
 
-namespace app\adapter\weather;
+namespace app\api\adapter\weather;
 
 
 class WeatherApi {
@@ -12,14 +12,15 @@ class WeatherApi {
 
     public function __construct($source, $cityCode) {
 
-        $className  = $source.'\ImplementsApi';
+        $className  = 'app\api\adapter\weather\\'.$source.'\ImplementsApi';
 
         $this->implApi = new $className($cityCode);
+        $this->implApi->getSourceData();
     }
 
-    public function __get($name)
+    public function __call($name, $arguments)
     {
-        return $this->implApi->{$name};
+        return call_user_func([$this->implApi, $name]);
     }
 
 }

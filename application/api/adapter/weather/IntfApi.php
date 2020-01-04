@@ -1,5 +1,5 @@
 <?php
-namespace app\adapter\weather;
+namespace app\api\adapter\weather;
 
 /**
  * Interface IntfApi for implementing weather api

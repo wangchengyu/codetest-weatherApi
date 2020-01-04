@@ -1,7 +1,8 @@
 <?php
-namespace app\adapter\weather\openweatherthrmap;
+namespace app\api\adapter\weather\openweathermap;
 
-use app\adapter\weather\IntfApi;
+use app\api\adapter\weather\IntfApi;
+use think\Config;
 
 class ImplementsApi implements IntfApi {
 
@@ -16,14 +17,14 @@ class ImplementsApi implements IntfApi {
     private $config = [];
 
     /**
-     * @var string cityid in openweatherthrmap
+     * @var string cityid in openweathermap
      */
     private $cityId = '';
 
     /**
      * @var string adapter name
      */
-    private static $name = 'openweatherthrmap';
+    private static $name = 'openweathermap';
 
     /**
      * ImplementsApi constructor.
@@ -31,7 +32,7 @@ class ImplementsApi implements IntfApi {
      */
     public function __construct($cityCode) {
 
-        $this->config = Config::get('WeatherApi')[static::$name];
+        $this->config = Config::get('WeatherApi')['api_config'][static::$name];
         $this->cityId = $this->config['city_id_map'][$cityCode];
     }
 
@@ -44,7 +45,7 @@ class ImplementsApi implements IntfApi {
             $this->config['host'].'/'.
             $this->config['path'].'?'.
             'id='. $this->cityId.'&'.
-            'appid='.$this->config['appid'].
+            'appid='.$this->config['appid'].'&'.
             'unit=metric';
 
         $this->sourceData = json_decode(file_get_contents($url), true);
@@ -68,7 +69,7 @@ class ImplementsApi implements IntfApi {
     }
 
     public function getWeather() {
-        return $this->sourceData['weather']['description'];
+        return $this->sourceData['weather'][0]['description'];
     }
 
     public function getWind() {
